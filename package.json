@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node":"12.1.0",
-    "npm":"6.14.4"
+    "node": "12.1.0",
+    "npm": "6.14.4"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -12,6 +12,7 @@
     "@testing-library/user-event": "^7.2.1",
     "api-library-travel-queries": "github:CabBuddies/API-Library-TravelQueries#master",
     "api-library-user-management": "github:CabBuddies/API-Library-UserManagement#master",
+    "express": "^4.17.1",
     "jquery": "^3.4.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -22,8 +23,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "postinstall": "chmod -R +x node_modules/next/dist/bin/next-* && npm run build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
