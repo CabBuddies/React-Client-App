@@ -5,18 +5,21 @@ import Form from '../../../commons/form/Form';
 import userState from '../../../../utils/UserState';
 
 import UserManagement from 'api-library-user-management';
+import FirebaseAuth from '../firebase/FirebaseAuth';
 
 class Register extends Component {
  
   async submitForm(data){
     console.log(UserManagement);
+    //alert(JSON.stringify(data));
     let result = await (
         await UserManagement.registerUser(
                 data.email,
                 data.password,
                 data.firstName,
                 data.lastName,
-                data.phoneNumber)
+                data.phoneNumber,
+                data.registrationType)
             ).json();
     console.log(result);
     userState.setUser(result.accessToken);
@@ -42,12 +45,20 @@ class Register extends Component {
             },
             {
                 name:'phoneNumber'
+            },
+            {
+                name:'registrationType',
+                type:'hidden',
+                value:'InApp'
             }
         ]
     };
     console.log(formSchema);
     return (
-      <Form formSchema={formSchema}/>
+      <div>
+        <Form formSchema={formSchema}/>
+        <FirebaseAuth />
+      </div>
     );
   }
 }

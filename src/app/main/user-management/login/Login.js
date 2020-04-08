@@ -5,6 +5,7 @@ import Form from '../../../commons/form/Form';
 import userState from '../../../../utils/UserState';
 
 import UserManagement from 'api-library-user-management';
+import FirebaseAuth from '../firebase/FirebaseAuth';
 
 class Login extends Component {
  
@@ -31,7 +32,10 @@ class Login extends Component {
     };
     console.log(formSchema);
     return (
-      <Form formSchema={formSchema}/>
+      <div>
+        <Form formSchema={formSchema}/>
+        <FirebaseAuth />
+      </div>
     );
   }
 }

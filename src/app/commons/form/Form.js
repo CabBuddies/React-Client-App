@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Input from './elements/Input';
 import TextArea from './elements/TextArea';
 import $ from 'jquery';
+import Hidden from './elements/Hidden';
 class Form extends Component {
 
   render() {
@@ -18,6 +19,9 @@ class Form extends Component {
           default:
             fields[index] = <Input key={fields[index].name} name={fields[index].name} required={fields[index].required} />
             break
+          case 'hidden':
+            fields[index] = <Hidden key={fields[index].name} name={fields[index].name} value={fields[index].value} />
+            break  
           case 'textarea':
             fields[index] = <TextArea key={fields[index].name} name={fields[index].name} required={fields[index].required} />
             break
@@ -42,9 +46,9 @@ class Form extends Component {
       };
 
     return (
-      <form onSubmit={basicOnSubmit}>
+      <form id="myForm" onSubmit={basicOnSubmit}>
         {fields}
-        <input type='submit'/>
+        <input id="submitButton" type='submit'/>
       </form>
     );
   }
