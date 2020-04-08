@@ -9,7 +9,9 @@ import FirebaseAuth from '../firebase/FirebaseAuth';
 import { Redirect } from 'react-router';
 
 class Login extends Component {
- 
+
+  state = {}
+
   async submitForm(data){
     console.log(UserManagement);
     let result = await (await UserManagement.loginUser(data.email,data.password)).json();

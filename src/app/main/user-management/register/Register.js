@@ -11,6 +11,8 @@ import { Redirect } from 'react-router';
 
 class Register extends Component {
  
+  state = {}
+
   async submitForm(data){
     console.log(UserManagement);
     //alert(JSON.stringify(data));
