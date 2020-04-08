@@ -7,6 +7,8 @@ import userState from '../../../../utils/UserState';
 import UserManagement from 'api-library-user-management';
 import FirebaseAuth from '../firebase/FirebaseAuth';
 
+import { Redirect } from 'react-router';
+
 class Register extends Component {
  
   async submitForm(data){
@@ -23,9 +25,14 @@ class Register extends Component {
             ).json();
     console.log(result);
     userState.setUser(result.accessToken);
+
+    this.setState({complete: true});
   }
 
   render() {
+    if(this.state.complete){
+      return <Redirect push to="/my-account"/>
+    }
     let formSchema = {
         onSubmit:this.submitForm,
         fields:[

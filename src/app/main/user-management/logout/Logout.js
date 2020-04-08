@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
  
 import userState from '../../../../utils/UserState';
+import { Redirect } from 'react-router';
 
 class About extends Component {
  
   render() {
     userState.unsetUser();
     return (
-      <h3>
-        Logout: CabBuddies
-      </h3>
+      <Redirect push to="/"/>
     );
   }
 }
