@@ -6,24 +6,20 @@ import userState from '../../../../utils/UserState';
 
 import UserManagement from 'api-library-user-management';
 import FirebaseAuth from '../firebase/FirebaseAuth';
-import { Redirect } from 'react-router';
+import { useHistory } from "react-router-dom";
 
 class Login extends Component {
 
-  state = {}
-
+  
   async submitForm(data){
     console.log(UserManagement);
     let result = await (await UserManagement.loginUser(data.email,data.password)).json();
     console.log(result);
     userState.setUser(result.accessToken);
-    this.setState({complete: true});
+    useHistory().push('/my-account')
   }
 
   render() {
-    if(this.state.complete){
-      return <Redirect push to="/my-account"/>
-    }
     let formSchema = {
         onSubmit:this.submitForm,
         fields:[
