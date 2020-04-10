@@ -1,6 +1,7 @@
 class UserState{
 
     AUTH_TOKEN = 'authToken';
+    EXP_TIME = 'expirationTime';
 
     hasUser(){
         return localStorage.hasOwnProperty(this.AUTH_TOKEN);
@@ -12,15 +13,17 @@ class UserState{
         return jwt !== null ? jwt : '';
     }
 
-    setUser(authToken){
+    setUser(authToken,expirationTime){
         console.log(this.AUTH_TOKEN+' => '+authToken);
         localStorage.setItem(this.AUTH_TOKEN,authToken);
+        localStorage.setItem(this.EXP_TIME,expirationTime);
         console.log(this.getUser());
         this.onUpdate();
     }
 
     unsetUser(){
         localStorage.removeItem(this.AUTH_TOKEN);
+        localStorage.removeItem(this.EXP_TIME);
         console.log(this.getUser());
         this.onUpdate();
     }

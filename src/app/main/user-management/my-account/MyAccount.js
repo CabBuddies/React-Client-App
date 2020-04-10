@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import userState from '../../../../utils/UserState';
  
 import UserManagement from 'api-library-user-management';
+import JSONPrint from '../../../commons/json/JSONPrint';
 
 class MyAccount extends Component {
  
@@ -19,9 +20,7 @@ class MyAccount extends Component {
   render() {
     console.log('MyAccount rendered')
     return (
-      <h3>
-        MyAccount :<pre>{JSON.stringify(this.state.result, undefined, 2)}</pre>
-      </h3>
+      <JSONPrint data={this.state.result}/>
     );
   }
 }
