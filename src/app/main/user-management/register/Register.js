@@ -7,8 +7,6 @@ import userState from '../../../../utils/UserState';
 import UserManagement from 'api-library-user-management';
 import FirebaseAuth from '../firebase/FirebaseAuth';
 
-import { useHistory } from "react-router-dom";
-
 class Register extends Component {
 
   async submitForm(data){
@@ -26,7 +24,7 @@ class Register extends Component {
     console.log(result);
     userState.setUser(result.accessToken);
 
-    useHistory().push('/my-account')
+    window.location = '/my-account'
   }
 
   render() {

@@ -14,6 +14,7 @@ class Create extends Component {
     data.tags = data.tags.split(',')
     let result = await (await TQQuery.createQuery(userState.getUser(),data.title,data.body,data.tags)).json();
     console.log(result);
+    window.location = '/query'
   }
 
   render() {

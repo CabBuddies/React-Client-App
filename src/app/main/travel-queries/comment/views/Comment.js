@@ -3,20 +3,21 @@ import React, { Component } from 'react';
 class Comment extends Component {
  
   render() {
+    let comment = this.props.data;
     return (
       <table border="1">
             <tbody>
                 <tr>
                     <th>Text</th>
-                    <td>{this.props.data.body}</td>
+                    <td>{comment.body}</td>
                 </tr>
                 <tr>
                     <th>Posted By</th>
-                    <td>{this.props.data.user.email}</td>
+                    <td>{comment.user.email}</td>
                 </tr>
                 <tr>
                     <th>Posted On</th>
-                    <td>{this.props.data.postedOn}</td>
+                    <td>{comment.postedOn}</td>
                 </tr>
             </tbody>
       </table>

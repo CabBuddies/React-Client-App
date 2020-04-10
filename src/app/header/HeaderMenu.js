@@ -14,14 +14,9 @@ class HeaderMenu extends Component {
     }
 
     render() {
-        let hasUser = false;
-        try {
-            hasUser = this.state.hasUser
-            console.log(hasUser)
-        } catch (error) {
-            //this.onUserStateChange();
-            hasUser = userState.hasUser()
-        }
+        let hasUser = userState.hasUser();
+        console.log(hasUser)
+        
         // let hasUser = false;
         let tr = hasUser ? 
                     (

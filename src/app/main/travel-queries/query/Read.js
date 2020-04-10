@@ -7,7 +7,7 @@ import Query from './views/Query';
 class Read extends Component {
  
     state = {
-        result:[]
+        result:{}
     }
 
   async componentWillMount(){

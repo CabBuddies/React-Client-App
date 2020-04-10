@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import ResponseList from './ResponseList';
-import Form from '../../../../commons/form/Form';
- 
-import userState from '../../../../../utils/UserState';
+import ResponseList from '../../response/views/ResponseList';
 
-import TQResponse from 'api-library-travel-queries/api/response';
+import CommentList from '../../comment/views/CommentList';
+import {default as RCreate} from '../../response/Create';
+import {default as CCreate} from '../../comment/Create';
+import Stats from '../../stats/views/Stats';
 
 class Query extends Component {
 
@@ -14,24 +14,6 @@ class Query extends Component {
         return (
             <p>Loading...</p>
         )
-
-        const submitForm = async (data) => {
-            console.log(TQResponse);
-            data.queryId = query._id;
-            let result = await (await TQResponse.createResponse(userState.getUser(),data.queryId,data.body)).json();
-            console.log(result);
-        }    
-
-        let formSchema = {
-            onSubmit:submitForm,
-            fields:[
-                {
-                    name:'body',
-                    required:true,
-                    type:'textarea'
-                }
-            ]
-        }
 
     return (
       <table border="1">
@@ -72,20 +54,37 @@ class Query extends Component {
             </tr>
             <tr>
                 <td>
-                    <pre>
-                        {JSON.stringify(query.stats,undefined,2)}
-                    </pre>
+                    <Stats id={query._id+'st'} data={query.stats}/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table border="1">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <h3>Post A Comment</h3>
+                                    <CCreate id={query._id+'cc'} queryId={query._id}/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <CommentList id={query._id+'cl'} data={query.comments}/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </td>
             </tr>
             <tr>
                 <td>
                     <h3>Post Your Response</h3>
-                    <Form formSchema={formSchema}/>
+                    <RCreate id={query._id+'rc'} queryId={query._id}/>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <ResponseList id={query._id+'123'} data={query.responses}/>
+                    <ResponseList id={query._id+'rl'} data={query.responses}/>
                 </td>
             </tr>
         </tbody>

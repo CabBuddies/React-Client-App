@@ -5,7 +5,7 @@ class Hidden extends Component {
   render() {
     console.log(this.props);
     return (
-      <input name={this.props.name} value={this.props.value} hidden={true}/>  
+      <input name={this.props.name} value={this.props.value} hidden={true} readOnly/>  
     );
   }
 }
